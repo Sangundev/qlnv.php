@@ -19,16 +19,30 @@ $employees = NhanVien::displayEmployees($page, $employeesPerPage);
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Admin Page - List of Employees</title>
     <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+        }
+        h1 {
+            text-align: center;
+            margin-top: 20px;
+        }
         table {
             width: 100%;
             border-collapse: collapse;
+            margin-top: 20px;
         }
-        table, th, td {
-            border: 1px solid black;
-            padding: 8px;
+        th, td {
+            padding: 10px;
+            border: 1px solid #ddd;
             text-align: left;
         }
         th {
+            background-color: #f2f2f2;
+        }
+        tr:nth-child(even) {
             background-color: #f2f2f2;
         }
         .pagination {
@@ -40,35 +54,38 @@ $employees = NhanVien::displayEmployees($page, $employeesPerPage);
             padding: 5px 10px;
             margin: 0 5px;
             border: 1px solid #ccc;
+            background-color: #fff;
             text-decoration: none;
+            color: #007bff;
         }
         .pagination a.active {
             background-color: #007bff;
             color: #fff;
-            border: 1px solid #007bff;
         }
-        /* Add style for login button */
-        .login-button {
-            margin-top: 20px;
+        .pagination a:hover {
+            background-color: #ddd;
+        }
+        .action-links {
             text-align: center;
         }
-        .login-button a {
-            display: inline-block;
-            padding: 10px 20px;
+        .action-links a {
+            margin: 0 5px;
+            padding: 5px 10px;
+            text-decoration: none;
             background-color: #007bff;
             color: #fff;
-            text-decoration: none;
-            border-radius: 5px;
+            border-radius: 3px;
         }
-        .login-button a:hover {
+        .action-links a:hover {
             background-color: #0056b3;
         }
     </style>
-</head>
+</head></head>
 <body>
     <h1>List of Employees</h1>
     <table>
         <thead>
+        <a href="add_employee.php">ADD</a>
             <tr>
                 <th>ID</th>
                 <th>Name</th>
@@ -81,6 +98,7 @@ $employees = NhanVien::displayEmployees($page, $employeesPerPage);
         </thead>
         <tbody>
             <?php
+            
             if (!empty($employees) && is_array($employees)) {
                 foreach ($employees as $employee) {
                     echo "<tr>";
@@ -115,6 +133,8 @@ $employees = NhanVien::displayEmployees($page, $employeesPerPage);
         for ($i = 1; $i <= $totalPages; $i++) {
             echo "<a href='admin_page.php?page=$i'>$i</a>";
         }
+
+        
         ?>
     </div>
 </body>
