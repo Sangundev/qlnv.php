@@ -33,13 +33,29 @@
             color: #fff;
             border: 1px solid #007bff;
         }
+        /* Add style for login button */
+        .login-button {
+            margin-top: 20px;
+            text-align: center;
+        }
+        .login-button a {
+            display: inline-block;
+            padding: 10px 20px;
+            background-color: #007bff;
+            color: #fff;
+            text-decoration: none;
+            border-radius: 5px;
+        }
+        .login-button a:hover {
+            background-color: #0056b3;
+        }
     </style>
 </head>
 <body>
-    <h1>List of Employees</h1>
     <?php
     require_once("config/db.class.php");
     require_once("entities/nhanvien.class.php");
+
 
     // Define the number of employees per page
     $employeesPerPage = 5;
@@ -68,6 +84,11 @@
     echo "<input type='hidden' name='page' value='$page'>";
     echo "<button type='submit'>Go to Page $page</button>";
     echo "</form>";
+    echo "</div>";
+
+    // Add login button
+    echo "<div class='login-button'>";
+    echo "<a href='login.php'>Login</a>";
     echo "</div>";
     ?>
 </body>
